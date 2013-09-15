@@ -6,6 +6,7 @@
 // @author       Karlotcha Hoa
 // ==/UserScript==
 
+setTimeout( function(){
 // **************************************************************************
 // PT models
 // **************************************************************************
@@ -84,3 +85,4 @@ $style.attr('type', 'text/css')
       .append('.button.merged { color: #eee; background-color: #470047; border-color: #470047; }')
       .append('.button.deployed { color: #eee; background-color: #003D00; border-color: #003D00; }')
 $('head').append($style)
+}, 10000);
