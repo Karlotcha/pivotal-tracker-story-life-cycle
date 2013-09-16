@@ -12,7 +12,7 @@ When you will click on the button `Accept` here:
 it will add automatically a button `Merge` and a tag "needs merge".  
 ![step2](https://f.cloud.github.com/assets/1086288/1147904/6d1a54cc-1eb3-11e3-84af-f4fa6e4cb145.png)
 
-Click on `Merge` when your PR is merged and a new button `Deploy` will appear> Also the previous tag will be replaced by "needs deploy"  
+Click on `Merge` when your PR is merged and a new button `Deploy` will appear. Also the previous tag will be replaced by "needs deploy"  
 ![step3](https://f.cloud.github.com/assets/1086288/1147905/6d26a484-1eb3-11e3-8692-54de4f0c573b.png)
 
 Click on `Deploy` when it is deployed and "needs deploy" will be replaced by a new tag "live"  
@@ -20,8 +20,8 @@ Click on `Deploy` when it is deployed and "needs deploy" will be replaced by a n
 
 
 
-## TOFIX
+### TOFIX
 - your project needs to already have the tags "needs merge", "needs deploy" and "live" (just create them for one story is enough).
 
-## TODO
+### TODO
 - automatically merge story (using merge comment in the story)
