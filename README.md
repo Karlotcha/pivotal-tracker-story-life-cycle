@@ -21,7 +21,7 @@ Click on `Deploy` when it is deployed and "needs deploy" will be replaced by a n
 
 
 ### TOFIX
-- your project needs to already have the tags "needs merge", "needs deploy" and "live" (just create them for one story is enough).
+- your project needs to already have the tags "needs merge", "needs deploy" and "live" (just creating them for one story is enough).
 
 ### TODO
 - automatically merge story (using merge comment in the story)
