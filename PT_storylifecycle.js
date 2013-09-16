@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle
-// @version      0.2
+// @version      0.3
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/s/projects/*
 // @author       Karlotcha Hoa
@@ -58,7 +58,7 @@ function main(){
   $states_merge.each(function(){
     var state = $(this)
     if (state.find('.merged').length == 0)
-      state.append('<label class="state button merged" tabindex="-1">Merged</label>')
+      state.append('<label class="state button merged" tabindex="-1">Merge</label>')
   })
 
   var $states_deploy = $('.accepted .label:contains("needs deploy")')
@@ -69,7 +69,7 @@ function main(){
   $states_deploy.each(function(){
     var state = $(this)
     if (state.find('.deployed').length == 0)
-      state.append('<label class="state button deployed" tabindex="-1">Live</label>')
+      state.append('<label class="state button deployed" tabindex="-1">Deploy</label>')
   })
 }
 
