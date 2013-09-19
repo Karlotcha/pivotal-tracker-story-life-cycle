@@ -23,7 +23,11 @@ var project      = tracker.Project.current()
 $("body").delegate('.button.accept','click', function(){
   var cid   = $(this).parents().filter('.story').data('cid')
     , story = stories.get(cid)
-  story.labels().add(label_merge)
+
+  setTimeout(function(){
+    story.labels().add(label_merge)
+    story.save(story.changed)
+  },1000)
 })
 
 $("body").delegate('.button.merged','click', function(){
