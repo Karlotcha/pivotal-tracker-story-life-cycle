@@ -18,10 +18,5 @@ Click on `Merge` when your PR is merged and a new button `Deploy` will appear. A
 Click on `Deploy` when it is deployed and "needs deploy" will be replaced by a new tag "live"  
 ![step4](https://f.cloud.github.com/assets/1086288/1147906/6d350efc-1eb3-11e3-96ac-776f95c12363.png)
 
-
-
-### TOFIX
-- your project needs to already have the tags "needs merge", "needs deploy" and "live" (just creating them for one story is enough).
-
 ### TODO
 - automatically merge story (using merge comment in the story)
