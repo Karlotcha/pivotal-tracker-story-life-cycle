@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle
-// @version      0.4
+// @version      0.5
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/s/projects/*
 // @author       Karlotcha Hoa
@@ -16,6 +16,10 @@ var project      = tracker.Project.current()
   , label_merge  = labels.findByName('needs merge')
   , label_deploy = labels.findByName('needs deploy')
   , label_live   = labels.findByName('live')
+
+if (!label_merge)  label_merge  = labels.create({name:'needs merge'})
+if (!label_deploy) label_deploy = labels.create({name:'needs deploy'})
+if (!label_live)   label_live   = labels.create({name:'live'})
 
 // **************************************************************************
 // buttons
