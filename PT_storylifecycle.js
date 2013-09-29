@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle
-// @version      0.5
+// @version      0.6
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/s/projects/*
 // @author       Karlotcha Hoa
@@ -55,7 +55,7 @@ $("body").delegate('.button.deployed','click', function(){
 })
 
 // **************************************************************************
-// main loop
+// main loop - creating mandatory buttons
 // **************************************************************************
 function main(){
   var $states_merge = $('.accepted .label:contains("needs merge")')
@@ -64,9 +64,21 @@ function main(){
                         .find('span.state')
 
   $states_merge.each(function(){
-    var state = $(this)
-    if (state.find('.merged').length == 0)
-      state.append('<label class="state button merged" tabindex="-1">Merge</label>')
+    var $state = $(this)
+    if ($state.find('.merged').length == 0)
+      $state.append('<label class="state button merged" tabindex="-1">Merge</label>')
+
+    // automatic merge if PR-merge comment found
+    var cid = $state.parents().filter('.story').data('cid')
+      , story = stories.get(cid)
+      , comments = story.comments()
+      , $button_merge = $state.find('.merged')
+
+    comments.each(function(comment) {
+      if (comment.get("text").lastIndexOf("Merge pull request #") < 0) return
+      if ($button_merge.length != 0)
+        $button_merge.trigger("click")
+    })
   })
 
   var $states_deploy = $('.accepted .label:contains("needs deploy")')
@@ -75,9 +87,9 @@ function main(){
                          .find('span.state')
 
   $states_deploy.each(function(){
-    var state = $(this)
-    if (state.find('.deployed').length == 0)
-      state.append('<label class="state button deployed" tabindex="-1">Deploy</label>')
+    var $state = $(this)
+    if ($state.find('.deployed').length == 0)
+      $state.append('<label class="state button deployed" tabindex="-1">Deploy</label>')
   })
 }
 
