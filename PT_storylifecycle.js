@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle
-// @version      0.6
+// @version      0.7
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/s/projects/*
 // @author       Karlotcha Hoa
@@ -75,7 +75,8 @@ function main(){
       , $button_merge = $state.find('.merged')
 
     comments.each(function(comment) {
-      if (comment.get("text").lastIndexOf("Merge pull request #") < 0) return
+      if (comment.get("commit_message") &&
+          comment.get("commit_message").lastIndexOf("Merge pull request #") < 0) return
       if ($button_merge.length != 0)
         $button_merge.trigger("click")
     })
