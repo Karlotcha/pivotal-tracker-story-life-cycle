@@ -18,3 +18,9 @@ When your PR is merged a new button `Deploy` will appear (you can click on `Merg
 Click on `Deploy` when it is deployed and "needs deploy" will be replaced by a new tag "live"  
 ![step4](https://f.cloud.github.com/assets/1086288/1147906/6d350efc-1eb3-11e3-96ac-776f95c12363.png)
 
+## how to install it?
+
+You have to create a new script in [tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) and just copy paste the script here:  
+https://raw.github.com/Karlotcha/pivotal-tracker-story-life-cycle/master/PT_storylifecycle.js
+  
+(and use this url in "update url" to have automatic updates if you want them)
