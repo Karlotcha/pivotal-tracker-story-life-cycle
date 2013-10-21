@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle
-// @version      0.8
+// @version      0.9
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/s/projects/*
 // @author       Karlotcha Hoa
@@ -71,7 +71,10 @@ function main(){
     // automatic merge if PR-merge comment found
     var cid = $state.parents().filter('.story').data('cid')
       , story = stories.get(cid)
-      , comments = story.comments()
+
+    if (!story) return
+
+    var comments = story.comments()
       , $button_merge = $state.find('.merged')
 
     comments.each(function(comment) {
