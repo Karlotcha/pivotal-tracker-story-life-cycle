@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle - V2
-// @version      2.0
+// @version      2.3
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/n/projects/*
 // @author       Karlotcha Hoa
@@ -24,15 +24,6 @@ if (!label_live)   label_live   = labels.create({name:'live'})
 // **************************************************************************
 // buttons
 // **************************************************************************
-$("body").delegate('.button.accept','click', function(){
-  var cid   = $(this).parents().filter('.story').data('cid')
-    , story = stories.get(cid)
-
-  setTimeout(function(){
-    story.labels().add(label_merge)
-  },1000)
-})
-
 $("body").delegate('.button.merged','click', function(){
   var cid   = $(this).parents().filter('.story').data('cid')
     , story = stories.get(cid)
@@ -40,6 +31,7 @@ $("body").delegate('.button.merged','click', function(){
   $(this).remove()
   story.labels().remove(label_merge)
   story.labels().add(label_deploy)
+  story.save(story.changed)
 })
 
 $("body").delegate('.button.deployed','click', function(){
@@ -49,12 +41,20 @@ $("body").delegate('.button.deployed','click', function(){
   $(this).remove()
   story.labels().remove(label_deploy)
   story.labels().add(label_live)
+  story.save(story.changed)
 })
 
 // **************************************************************************
 // main loop - creating mandatory buttons
 // **************************************************************************
 function main(){
+  //add a label 'needs merge' if not lived and not deployed
+  project.stories().each(function(story){
+    story_labels = story.labels()
+    if (story_labels.any(label_live) || story_labels.any(label_deploy)) return
+    story.labels().add(label_merge)
+  })
+
   var $states_merge = $('.accepted .label:contains("needs merge")')
                         .parents()
                         .filter('header')
@@ -94,9 +94,7 @@ function main(){
   })
 }
 
-for (var i = 1; i<10; i=i+2) setTimeout(main, i*1000)
-setInterval(main, 60000)
-$('body').click(function(){setTimeout(main, 1000)})
+setInterval(main, 1000)
 
 // **************************************************************************
 // style
