@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         PT - full story life cycle
-// @version      0.9
+// @name         PT - full story life cycle - V2
+// @version      2.0
 // @description  track stories to PR and to deploy
-// @match        https://www.pivotaltracker.com/s/projects/*
+// @match        https://www.pivotaltracker.com/n/projects/*
 // @author       Karlotcha Hoa
 // ==/UserScript==
 
@@ -30,7 +30,6 @@ $("body").delegate('.button.accept','click', function(){
 
   setTimeout(function(){
     story.labels().add(label_merge)
-    story.save(story.changed)
   },1000)
 })
 
@@ -41,7 +40,6 @@ $("body").delegate('.button.merged','click', function(){
   $(this).remove()
   story.labels().remove(label_merge)
   story.labels().add(label_deploy)
-  story.save(story.changed)
 })
 
 $("body").delegate('.button.deployed','click', function(){
@@ -51,7 +49,6 @@ $("body").delegate('.button.deployed','click', function(){
   $(this).remove()
   story.labels().remove(label_deploy)
   story.labels().add(label_live)
-  story.save(story.changed)
 })
 
 // **************************************************************************
