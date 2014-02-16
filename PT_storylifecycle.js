@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         PT - full story life cycle - V2
-// @version      2.3
+// @version      2.4
 // @description  track stories to PR and to deploy
 // @match        https://www.pivotaltracker.com/n/projects/*
 // @author       Karlotcha Hoa
@@ -52,6 +52,8 @@ function main(){
   project.stories().each(function(story){
     story_labels = story.labels()
     if (story_labels.any(label_live) || story_labels.any(label_deploy)) return
+    if (story.isChore()) return
+
     story.labels().add(label_merge)
   })
 
