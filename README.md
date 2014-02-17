@@ -24,3 +24,7 @@ You have to create a new script in [tampermonkey](https://chrome.google.com/webs
 https://raw.github.com/Karlotcha/pivotal-tracker-story-life-cycle/master/PT_storylifecycle.js
   
 (and use this url in "update url" to have automatic updates if you want them)
+
+## Using the new pivotal tracker interface? (2014 version)
+
+Same thing, but use this one: https://raw.github.com/Karlotcha/pivotal-tracker-story-life-cycle/new-pivotal-tracker-2014/PT_storylifecycle.js
